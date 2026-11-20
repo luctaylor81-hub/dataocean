@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08283b">
+    <meta name="description" content="Connexion à la plateforme Data Ocean.">
+    <title>Connexion — Data Ocean</title>
+    <link rel="stylesheet" href="connexion.css">
+    <script src="connexion.js" defer></script>
+  </head>
+  <body class="auth-page">
+    <main class="auth-layout">
+      <section class="auth-visual" aria-labelledby="auth-brand-title">
+        <a class="auth-brand" href="/connexion" aria-label="Data Ocean">
+          <span class="auth-brand-mark" aria-hidden="true">D</span>
+          <span>DATA<span>OCEAN</span></span>
+        </a>
+        <div class="auth-message">
+          <p class="auth-eyebrow">SCIENCE CITOYENNE · GABON</p>
+          <h1 id="auth-brand-title">Le littoral se protège aussi par la connaissance.</h1>
+          <p>Retrouvez les observations et les contributions de la communauté côtière.</p>
+        </div>
+        <p class="auth-visual-footer">DATA OCEAN <span>·</span> LITTORAL GABONAIS</p>
+      </section>
+
+      <section class="auth-workspace" aria-labelledby="form-title">
+        <div class="auth-form-wrap">
+          <p class="auth-eyebrow auth-eyebrow-dark">ESPACE SÉCURISÉ</p>
+          <h2 id="form-title">Bienvenue</h2>
+          <p class="auth-intro" id="form-intro">Connectez-vous pour accéder au tableau de bord.</p>
+
+          <div class="role-switch" role="group" aria-label="Type de compte">
+            <button type="button" class="role-option selected" data-role="user" aria-pressed="true">Utilisateur</button>
+            <button type="button" class="role-option" data-role="admin" aria-pressed="false">Administrateur</button>
+          </div>
+
+          <form id="auth-form" novalidate>
+            <label for="auth-email">Adresse courriel</label>
+            <input id="auth-email" name="email" type="email" autocomplete="username" maxlength="254" placeholder="nom@exemple.com" required>
+
+            <label for="auth-password">Mot de passe</label>
+            <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" placeholder="10 caractères minimum" required>
+
+            <div class="confirm-field" id="confirm-field" hidden>
+              <label for="auth-confirm">Confirmer le mot de passe</label>
+              <input id="auth-confirm" name="confirm" type="password" autocomplete="new-password" minlength="10" maxlength="128">
+            </div>
+
+            <p class="auth-error" id="auth-error" role="alert" hidden></p>
+            <button class="auth-submit" id="auth-submit" type="submit">Se connecter</button>
+          </form>
+
+          <button class="auth-mode-switch" id="auth-mode-switch" type="button">Créer un compte utilisateur</button>
+          <p class="auth-admin-note" id="auth-admin-note" hidden>Le compte administrateur doit être configuré par l’équipe Data Ocean.</p>
+          <a class="auth-back-link" href="/connexion">DATA OCEAN</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

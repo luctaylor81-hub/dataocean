@@ -1,0 +1,6 @@
+data-ocean.sqlite
+data-ocean.sqlite-shm
+data-ocean.sqlite-wal
+.env
+.env.*
+node_modules/

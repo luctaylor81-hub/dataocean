@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#06264c">
+    <meta name="description" content="Tableau de bord participatif pour suivre l’environnement du littoral gabonais.">
+    <title>Data Ocean — Littoral gabonais</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js?v=7" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#accueil" aria-label="Data Ocean, accueil">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>DATA<span class="brand-light">OCEAN</span></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <a href="#accueil">Accueil</a>
+        <a href="#donnees">Données</a>
+        <a href="#carte">Carte interactive</a>
+        <a href="#rapports">Rapports</a>
+        <a class="nav-current" href="#tableau">Tableau de bord</a>
+      </nav>
+      <div class="notification-area">
+        <button class="notification-button" id="notification-button" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notification-panel">
+          <span aria-hidden="true">🔔</span>
+          <span class="notification-count" id="notification-count" hidden>0</span>
+        </button>
+        <section class="notification-panel" id="notification-panel" aria-labelledby="notification-title" hidden>
+          <div class="notification-heading">
+            <h2 id="notification-title">Notifications</h2>
+            <button type="button" id="mark-notifications-read">Tout lire</button>
+          </div>
+          <p class="notification-empty" id="notification-empty">Aucun changement récent.</p>
+          <ul class="notification-list" id="notification-list"></ul>
+          <button class="browser-notification-button" type="button" id="enable-browser-notifications">Activer les alertes du navigateur</button>
+        </section>
+      </div>
+      <div class="account">
+        <span class="account-avatar" id="account-avatar" aria-hidden="true">U</span>
+        <span class="account-name" id="account-name"></span>
+        <span class="account-role" id="account-role"></span>
+        <button class="logout-button" id="logout-button" type="button" title="Se déconnecter" aria-label="Se déconnecter">↪</button>
+      </div>
+    </header>
+
+    <main id="accueil">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-content">
+          <p class="breadcrumb">Accueil <span>›</span> Littoral gabonais</p>
+          <p class="eyebrow">SCIENCE CITOYENNE • GABON</p>
+          <h1 id="page-title">DATA OCEAN</h1>
+          <p class="hero-copy">Une initiative citoyenne pour protéger le littoral gabonais grâce à la collecte, l’analyse et la cartographie des données environnementales.</p>
+          <div class="hero-meta">
+            <span class="live-indicator"><span></span> SUIVI EN DIRECT</span>
+            <span id="current-time">Mise à jour —</span>
+          </div>
+          <div class="hero-actions">
+            <a class="hero-link" href="#mission">Découvrir le projet <span>→</span></a>
+            <a class="hero-link hero-link-secondary" href="#tableau">Voir le tableau <span>→</span></a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Chiffres clés du projet">
+          <div class="hero-panel-top">
+            <span class="hero-badge">UN HÉRITAGE POUR LE GABON</span>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>6</strong>
+              <span>plages principales</span>
+            </div>
+            <div>
+              <strong>200</strong>
+              <span>volontaires formés</span>
+            </div>
+            <div>
+              <strong>5 000</strong>
+              <span>personnes sensibilisées</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview" id="mission">
+        <div class="overview-intro">
+          <p class="eyebrow dark-eyebrow">PROJET</p>
+          <h2>Science citoyenne du littoral gabonais</h2>
+          <p>
+            DATA OCEAN mobilise les jeunes, les communautés littorales et les pêcheurs comme acteurs directs de la protection marine.
+            En collectant des données essentielles sur la biodiversité, la pollution et l’état des écosystèmes côtiers,
+            le projet alimente une carte interactive nationale du littoral gabonais.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Sensibilisation</span>
+            <span class="chip">Formation</span>
+            <span class="chip">Participation citoyenne</span>
+            <span class="chip">Technologie</span>
+          </div>
+        </div>
+        <div class="overview-card">
+          <p class="card-kicker">Concept</p>
+          <ul>
+            <li><span>01</span> Une action concrète pour chaque citoyen.</li>
+            <li><span>02</span> Une donnée pour chaque décision.</li>
+            <li><span>03</span> Un projet visible et fédérateur.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="field-gallery" aria-labelledby="gallery-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow dark-eyebrow">LE LITTORAL EN IMAGES</p>
+            <h2 id="gallery-title">Protéger la vie, préserver les milieux</h2>
+          </div>
+          <p class="gallery-intro">Des images pour accompagner les articles consacrés aux écosystèmes, aux tortues marines et à la pollution plastique.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card gallery-card-mangrove">
+            <img src="images/mangrove-gabonaise.png" alt="Mangrove gabonaise et pirogue au bord de l’eau" loading="lazy" decoding="async">
+            <figcaption>
+              <span class="gallery-label">ARTICLE 01 · ÉCOSYSTÈMES CÔTIERS</span>
+              <strong>Les mangroves du Gabon</strong>
+              <span>Des forêts au cœur de l’équilibre côtier.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card gallery-card-turtles">
+            <img src="images/tortues-marines.png" alt="Jeunes tortues marines réunies sur le sable avant leur départ vers l’océan" loading="lazy" decoding="async">
+            <figcaption>
+              <span class="gallery-label">ARTICLE 05 · FAUNE MARINE</span>
+              <strong>Un patrimoine vivant à protéger</strong>
+              <span>Les tortues marines du Gabon et les enjeux de leur conservation.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card gallery-card-nesting">
+            <img src="images/tortue-plage.jpeg" alt="Tortue marine adulte sur une plage au coucher du soleil" loading="lazy" decoding="async">
+            <figcaption>
+              <span class="gallery-label">ARTICLE 06 · FAUNE MARINE</span>
+              <strong>La vie des tortues marines</strong>
+              <span>Des plages de ponte aux grands espaces océaniques.</span>
+            </figcaption>
+          </figure>
+          <figure class="gallery-card gallery-card-pollution">
+            <img src="images/tortue-plastique.jpeg" alt="Tortue marine nageant près d’une bouteille et d’un anneau en plastique" loading="lazy" decoding="async">
+            <figcaption>
+              <span class="gallery-label">ARTICLE 09 · POLLUTION MARINE</span>
+              <strong>La pollution plastique</strong>
+              <span>Comprendre le trajet des déchets du continent jusqu’à l’océan.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="feature-block">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow dark-eyebrow">NOTRE APPROCHE</p>
+            <h2>Un modèle de conservation participative</h2>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">S</div>
+            <h3>Science</h3>
+            <p>Collecte de données fiables et exploitables sur les plages, mangroves et zones sensibles.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">P</div>
+            <h3>Protection</h3>
+            <p>Renforcement de la surveillance des écosystèmes côtiers et de la biodiversité marine.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">C</div>
+            <h3>Communauté</h3>
+            <p>Impliquer directement les habitants et les jeunes dans la préservation du littoral.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">D</div>
+            <h3>Données</h3>
+            <p>Centraliser les informations pour orienter les politiques publiques et les programmes de conservation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="info-grid" id="objectifs">
+        <article class="info-card">
+          <p class="eyebrow dark-eyebrow">PROBLÉMATIQUE</p>
+          <h3>Un littoral menacé par les déchets et la dégradation écologique</h3>
+          <p>
+            Le littoral gabonais est confronté à une accumulation croissante de déchets marins,
+            à la dégradation des mangroves et à une baisse de la biodiversité observable,
+            notamment celle des tortues marines et des oiseaux côtiers.
+          </p>
+        </article>
+        <article class="info-card">
+          <p class="eyebrow dark-eyebrow">OBJECTIFS</p>
+          <ul class="check-list">
+            <li>Former 200 volontaires aux techniques de collecte de données environnementales.</li>
+            <li>Collecter mensuellement des données sur 6 plages stratégiques.</li>
+            <li>Mettre en place une carte interactive nationale accessible à l’administration et à la population.</li>
+            <li>Sensibiliser 5 000 personnes à la protection du littoral.</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <p class="eyebrow dark-eyebrow">RÉSULTATS ATTENDUS</p>
+          <ul class="check-list">
+            <li>Plus de 2 tonnes de déchets collectés et classés.</li>
+            <li>Une carte interactive consultable en temps réel.</li>
+            <li>Publication d’un rapport trimestriel et annuel.</li>
+            <li>Mobilisation accrue de la jeunesse gabonaise pour la protection de la mer.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="process" id="impact">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow dark-eyebrow">FONCTIONNEMENT</p>
+            <h2>Comment le site internet est censé fonctionner</h2>
+          </div>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <span>01</span>
+            <h3>Collecte terrain</h3>
+            <p>Chaque équipe de volontaires relève des observations localisées et documentées sur les plages.</p>
+          </div>
+          <div class="process-step">
+            <span>02</span>
+            <h3>Saisie en ligne</h3>
+            <p>Les données sont ajoutées via un formulaire simple, directement sur la plateforme.</p>
+          </div>
+          <div class="process-step">
+            <span>03</span>
+            <h3>Validation & analyse</h3>
+            <p>Les informations sont contrôlées puis affichées sur la carte, les tableaux et les graphiques.</p>
+          </div>
+          <div class="process-step">
+            <span>04</span>
+            <h3>Décision publique</h3>
+            <p>Les résultats orientent les politiques publiques, les actions de conservation et la sensibilisation.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-content" id="tableau">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark-eyebrow">SUIVI DU LITTORAL GABONAIS</p>
+            <h2>Données environnementales</h2>
+          </div>
+        </div>
+
+        <div class="dashboard-shell">
+          <aside class="filters-panel" aria-label="Filtres des observations">
+            <div class="filters-heading"><span class="filter-symbol">⌕</span><h2>Filtres</h2></div>
+            <label for="period-filter">Période</label>
+            <select id="period-filter">
+              <option value="all">Toutes les dates</option>
+              <option value="7">7 derniers jours</option>
+              <option value="30">30 derniers jours</option>
+            </select>
+            <label for="zone-filter">Zone côtière</label>
+            <select id="zone-filter">
+              <option value="all">Toutes les zones</option>
+              <option>Plage Akewni</option>
+              <option>Pointe Denis</option>
+              <option>Parc national de Pongara</option>
+              <option>Cap Lopez</option>
+              <option>Port-Gentil</option>
+              <option>Gamba</option>
+              <option>Mayumba</option>
+            </select>
+            <label for="type-filter">Type de données</label>
+            <select id="type-filter">
+              <option value="all">Tous les indicateurs</option>
+              <option>Déchets collectés</option>
+              <option>Biodiversité</option>
+              <option>Qualité de l’eau</option>
+              <option>Érosion côtière</option>
+              <option>Pollution</option>
+            </select>
+            <div class="filter-divider"></div>
+            <p class="sidebar-note"><span class="account-dot"></span> Actualisation à chaque nouvelle observation</p>
+            <div class="notice" id="connection-status" role="status" aria-live="polite">
+              <span aria-hidden="true">ⓘ</span>
+              <p>Connexion à la base SQLite…</p>
+            </div>
+          </aside>
+          <div class="dashboard-main">
+
+        <section class="metrics" aria-label="Indicateurs du littoral">
+          <article class="metric-card metric-blue">
+            <div class="metric-top"><span>Déchets collectés</span><span class="metric-icon">♻</span></div>
+            <p class="metric-number"><span id="waste-total">0</span><small> kg</small></p>
+            <p class="metric-caption">Dans les zones sélectionnées</p>
+            <div class="metric-foot"><span class="foot-dot"></span><span id="waste-observations">0 observation</span></div>
+          </article>
+          <article class="metric-card metric-teal">
+            <div class="metric-top"><span>Biodiversité observée</span><span class="metric-icon">◉</span></div>
+            <p class="metric-number"><span id="species-total">0</span><small> espèces</small></p>
+            <p class="metric-caption">Signalements de biodiversité</p>
+            <div class="metric-foot"><span class="foot-dot"></span><span id="species-zones">sur 0 zones</span></div>
+          </article>
+          <article class="metric-card metric-sky">
+            <div class="metric-top"><span>Température de l’eau</span><span class="metric-icon">♨</span></div>
+            <p class="metric-number"><span id="water-temp">—</span><small> °C</small></p>
+            <p class="metric-caption">Moyenne des mesures partagées</p>
+            <div class="metric-foot"><span class="foot-dot"></span><span id="temp-observations">Aucune mesure</span></div>
+          </article>
+          <article class="metric-card metric-amber">
+            <div class="metric-top"><span>Zones à surveiller</span><span class="metric-icon">⌁</span></div>
+            <p class="metric-number"><span id="risk-total">0</span><small> zones</small></p>
+            <p class="metric-caption">Pollution ou érosion signalée</p>
+            <div class="metric-foot"><span class="foot-dot"></span><span>À vérifier sur le terrain</span></div>
+          </article>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel chart-panel" id="donnees">
+            <div class="panel-heading">
+              <div><p class="eyebrow dark-eyebrow">OBSERVATIONS</p><h3>Déchets collectés</h3></div>
+              <span class="panel-unit">kg par matière</span>
+            </div>
+            <div class="chart-layout">
+              <div class="donut-wrap"><div class="donut" id="waste-donut"><div class="donut-center"><strong id="donut-total">0</strong><span>kg collectés</span></div></div></div>
+              <div class="legend" id="waste-legend" aria-label="Répartition des déchets"></div>
+            </div>
+            <div class="bar-chart" id="zone-chart" aria-label="Déchets collectés par zone"></div>
+          </section>
+
+          <section class="panel coast-panel" id="carte">
+            <div class="panel-heading">
+              <div><p class="eyebrow dark-eyebrow">GABON • CÔTE ATLANTIQUE</p><h3>Zones observées</h3></div>
+              <span class="map-count"><span class="foot-dot"></span><span id="zone-count">0 zones</span></span>
+            </div>
+            <div class="coast-visual">
+              <div class="ocean-label">OCÉAN ATLANTIQUE</div>
+              <img class="coastline" src="images/gabon-region.svg" alt="Carte régionale de l’Afrique centrale avec le Gabon mis en évidence">
+              <div class="map-points" id="map-points"></div>
+              <div class="map-caption"><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Fond : Natural Earth (domaine public)</a> · Cliquez sur un point pour filtrer</div>
+            </div>
+            <div class="map-legend"><span><i class="legend-pin pin-calm"></i> Observation</span><span><i class="legend-pin pin-alert"></i> À surveiller</span></div>
+          </section>
+        </div>
+
+        <section class="panel reports-panel" id="rapports">
+          <div class="panel-heading report-heading">
+            <div><p class="eyebrow dark-eyebrow">SUR LE TERRAIN</p><h3>Dernières observations</h3></div>
+            <div class="report-actions"><span class="live-pill"><span></span> Actualisé automatiquement</span><button class="button button-light" id="download-button">↓ <span>Télécharger CSV</span></button></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Zone</th><th>Observation</th><th>Mesure</th><th>Contributeur</th><th>Date et heure</th><th>Statut</th></tr></thead>
+              <tbody id="observations-table"></tbody>
+            </table>
+            <p class="empty-state" id="empty-state" hidden>Aucune observation pour cette zone. Ajoutez une contribution pour commencer.</p>
+          </div>
+          <div class="table-footer"><span id="table-summary">0 observation</span><span>Données partagées par la communauté</span></div>
+        </section>
+
+        <section class="contribute-banner">
+          <div class="contribute-icon" aria-hidden="true">＋</div>
+          <div><p class="eyebrow">VOTRE OBSERVATION COMPTE</p><h3>Vous êtes sur le littoral ?</h3><p>Contribuez au suivi de nos plages en partageant une observation datée et localisée.</p></div>
+          <button class="button button-primary" id="open-form">Ajouter une observation <span aria-hidden="true">→</span></button>
+        </section>
+          </div>
+        </div>
+
+        <footer><span>DATA<span class="brand-light">OCEAN</span> <span class="footer-separator">|</span> Pour un littoral gabonais mieux protégé.</span><span>Prototype — les mesures doivent être vérifiées sur le terrain.</span></footer>
+      </div>
+    </main>
+
+    <dialog id="observation-dialog" aria-labelledby="dialog-title">
+      <form id="observation-form">
+        <div class="dialog-heading"><div><p class="eyebrow dark-eyebrow">PARTICIPATION CITOYENNE</p><h2 id="dialog-title">Ajouter une observation</h2></div><button class="close-dialog" type="button" id="close-form" aria-label="Fermer">×</button></div>
+        <p class="dialog-copy">Partagez une mesure de terrain. Elle sera enregistrée dans la base SQLite avec la date et l’heure actuelles.</p>
+        <label for="form-zone">Zone côtière</label>
+        <select id="form-zone" required>
+          <option value="">Sélectionner une zone</option>
+          <option>Plage Akewni</option><option>Pointe Denis</option><option>Parc national de Pongara</option><option>Cap Lopez</option><option>Port-Gentil</option><option>Gamba</option><option>Mayumba</option>
+        </select>
+        <label for="form-type">Type d’observation</label>
+        <select id="form-type" required>
+          <option value="Déchets collectés">Déchets collectés</option>
+          <option value="Biodiversité">Biodiversité</option>
+          <option value="Qualité de l’eau">Température de l’eau</option>
+          <option value="Érosion côtière">Érosion côtière</option>
+          <option value="Pollution">Pollution</option>
+        </select>
+        <div class="form-row">
+          <div><label for="form-value">Valeur mesurée</label><input id="form-value" type="number" min="0" step="0.1" placeholder="Ex. 12" required></div>
+          <div><label for="form-unit">Unité</label><select id="form-unit"><option value="kg">kg</option><option value="espèces">espèces</option><option value="°C">°C</option><option value="niveau 1–5">niveau 1–5</option></select></div>
+        </div>
+        <label for="form-material" id="material-label">Matière (pour les déchets)</label>
+        <select id="form-material"><option>Plastique</option><option>Métal</option><option>Verre</option><option>Autre</option></select>
+        <label for="form-note">Commentaire <span class="optional">(facultatif)</span></label>
+        <textarea id="form-note" rows="3" maxlength="240" placeholder="Décrivez brièvement ce que vous avez observé…"></textarea>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-light" type="button" id="cancel-form">Annuler</button><button class="button button-primary" type="submit">Enregistrer l’observation</button></div>
+      </form>
+    </dialog>
+    <div class="notification-toast" id="notification-toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
