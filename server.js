@@ -7,6 +7,7 @@ const { createHash, randomBytes, randomUUID, scrypt, timingSafeEqual } = require
 const { promisify } = require("node:util");
 
 const root = __dirname;
+const staticRoot = path.join(root, "public");
 const databasePath = process.env.DATA_OCEAN_DB || path.join(root, "data-ocean.sqlite");
 const port = Number(process.env.PORT) || 3000;
 const sessionCookie = "data_ocean_session";
@@ -274,8 +275,8 @@ async function serveStatic(request, response, pathname) {
     return;
   }
   const requestedPath = decodedPath === "/" ? "/index.html" : decodedPath === "/connexion" ? "/connexion.html" : decodedPath;
-  const filePath = path.resolve(root, `.${requestedPath}`);
-  if (!filePath.startsWith(`${root}${path.sep}`)) {
+  const filePath = path.resolve(staticRoot, `.${requestedPath}`);
+  if (!filePath.startsWith(`${staticRoot}${path.sep}`)) {
     response.writeHead(403);
     response.end("Accès interdit.");
     return;

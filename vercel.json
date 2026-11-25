@@ -1,0 +1,9 @@
+{
+  "outputDirectory": "public",
+  "rewrites": [
+    {
+      "source": "/connexion",
+      "destination": "/connexion.html"
+    }
+  ]
+}

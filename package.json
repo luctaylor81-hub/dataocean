@@ -2,7 +2,13 @@
   "name": "data-ocean",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "start": "node server.js"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
   }
 }

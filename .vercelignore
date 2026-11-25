@@ -1,0 +1,8 @@
+.env
+.env.*
+data-ocean.sqlite
+data-ocean.sqlite-shm
+data-ocean.sqlite-wal
+server.js
+schema.postgres.sql
+README.md

@@ -98,8 +98,8 @@ async function initializeDatabase() {
   try {
     await refreshDatabaseObservations();
   } catch (error) {
-    console.error("Impossible de se connecter à la base SQLite.", error);
-    setConnectionStatus(`Connexion à la base SQLite impossible : ${error.message}. Lancez le serveur avec « npm start ».`, true);
+    console.error("Impossible de se connecter à la base de données.", error);
+    setConnectionStatus(`Connexion à la base de données impossible : ${error.message}.`, true);
   }
 }
 
@@ -129,8 +129,8 @@ async function refreshDatabaseObservations() {
   render();
   setConnectionStatus(
     migrationIssue
-      ? `Base SQLite connectée, mais l’import des anciennes observations a échoué : ${migrationIssue}`
-      : "Base SQLite connectée. Les observations sont partagées sur ce serveur.",
+      ? `Base de données connectée, mais l’import des anciennes observations a échoué : ${migrationIssue}`
+      : "Base de données connectée. Les observations sont partagées sur ce serveur.",
     Boolean(migrationIssue)
   );
 }
